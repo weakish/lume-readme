@@ -23,7 +23,7 @@ This plugin transforms them to:
 Transform all `README` files to directory URLs:
 
 ```ts
-import readme from "./plugins/readme/mod.ts";
+import readme from "https://deno.land/x/lume_readme/mod.ts";
 
 site.use(readme());
 ```
