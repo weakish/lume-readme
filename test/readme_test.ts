@@ -1,5 +1,17 @@
-import { assertEquals, assertThrows } from "https://deno.land/std@0.201.0/assert/mod.ts";
-import readme, { defaults, isHomepageMatch, getBasename, getDirPath, buildUrl, isExcluded, hasExplicitUrl, computeAutoUrl } from "../readme.ts";
+import {
+  assertEquals,
+  assertThrows,
+} from "https://deno.land/std@0.201.0/assert/mod.ts";
+import readme, {
+  buildUrl,
+  computeAutoUrl,
+  defaults,
+  getBasename,
+  getDirPath,
+  hasExplicitUrl,
+  isExcluded,
+  isHomepageMatch,
+} from "../readme.ts";
 import type { Page } from "lume/core/file.ts";
 import type Site from "lume/core/site.ts";
 
@@ -41,14 +53,20 @@ Deno.test("getBasename - extracts last segment", () => {
 });
 
 Deno.test("getDirPath - strips last segment", () => {
-  assertEquals(getDirPath("/docs/getting-started/README"), "/docs/getting-started/");
+  assertEquals(
+    getDirPath("/docs/getting-started/README"),
+    "/docs/getting-started/",
+  );
   assertEquals(getDirPath("/README"), "/");
   assertEquals(getDirPath("/zk/README"), "/zk/");
 });
 
 Deno.test("getDirPath - handles directory names containing homepage pattern", () => {
   assertEquals(getDirPath("/README-docs/readme"), "/README-docs/");
-  assertEquals(getDirPath("/docs/README-helper/readme"), "/docs/README-helper/");
+  assertEquals(
+    getDirPath("/docs/README-helper/readme"),
+    "/docs/README-helper/",
+  );
   assertEquals(getDirPath("/README/foo/readme"), "/README/foo/");
 });
 
@@ -160,7 +178,10 @@ Deno.test("computeAutoUrl - non-pretty URLs", () => {
 
 Deno.test("readme plugin - transforms README URLs via preprocess", () => {
   const pages = runPlugin([
-    { srcPath: "/docs/getting-started/README", url: "/docs/getting-started/README/" },
+    {
+      srcPath: "/docs/getting-started/README",
+      url: "/docs/getting-started/README/",
+    },
     { srcPath: "/README", url: "/README/" },
     { srcPath: "/zk/README", url: "/zk/README/" },
   ]);
@@ -205,9 +226,16 @@ Deno.test("readme plugin - preserves explicit URL with basename in different pat
 });
 
 Deno.test("readme plugin - preserves url: false", () => {
-  let capturedFn: (pages: { src: { path: string }; data: { url: unknown; basename?: string } }[]) => void;
+  let capturedFn: (
+    pages: {
+      src: { path: string };
+      data: { url: unknown; basename?: string };
+    }[],
+  ) => void;
   const site = createMockSite({
-    preprocessFn: (fn) => { capturedFn = fn as typeof capturedFn; },
+    preprocessFn: (fn) => {
+      capturedFn = fn as typeof capturedFn;
+    },
   });
   const plugin = readme();
   plugin(site as unknown as Site);
@@ -255,7 +283,10 @@ Deno.test("readme plugin - pretty URLs disabled via preprocess", () => {
 Deno.test("readme plugin - directory name containing homepage pattern via preprocess", () => {
   const pages = runPlugin([
     { srcPath: "/README-docs/readme", url: "/README-docs/readme/" },
-    { srcPath: "/docs/README-helper/readme", url: "/docs/README-helper/readme/" },
+    {
+      srcPath: "/docs/README-helper/readme",
+      url: "/docs/README-helper/readme/",
+    },
     { srcPath: "/README/foo/readme", url: "/README/foo/readme/" },
   ]);
 
@@ -269,7 +300,9 @@ interface PageMock {
   data: { url: string; basename?: string };
 }
 
-function createMockPages(pagesData: { srcPath: string; url: string }[]): PageMock[] {
+function createMockPages(
+  pagesData: { srcPath: string; url: string }[],
+): PageMock[] {
   return pagesData.map(({ srcPath, url }) => ({
     src: { path: srcPath },
     data: { url },
@@ -303,7 +336,9 @@ function runPlugin(
   let capturedFn: (pages: PageMock[]) => void;
   const site = createMockSite({
     ...siteConfig,
-    preprocessFn: (fn) => { capturedFn = fn as (pages: PageMock[]) => void; },
+    preprocessFn: (fn) => {
+      capturedFn = fn as (pages: PageMock[]) => void;
+    },
   });
   const plugin = readme(pluginOptions);
   plugin(site as unknown as Site);

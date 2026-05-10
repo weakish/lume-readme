@@ -1,6 +1,7 @@
 # readme
 
-A Lume plugin that uses `README.md` or specified page as homepage of the website, as on GitHub Pages and docsify.
+A Lume plugin that uses `README.md` or specified page as homepage of the
+website, as on GitHub Pages and docsify.
 
 ## Problem
 
@@ -38,8 +39,8 @@ site.use(readme({
 }));
 ```
 
-Do not include file extensions — Lume's `srcPath` is extension-less.
-The first match in the array wins. Matching is case insensitive.
+Do not include file extensions — Lume's `srcPath` is extension-less. The first
+match in the array wins. Matching is case insensitive.
 
 ### Exclude paths
 
@@ -65,18 +66,18 @@ site.use(readme({
 
 ## Options
 
-| Option | Type | Default | Description |
-|--------|------|---------|-------------|
+| Option     | Type       | Default      | Description                                                                             |
+| ---------- | ---------- | ------------ | --------------------------------------------------------------------------------------- |
 | `homepage` | `string[]` | `["README"]` | Ordered array of homepage basenames (case insensitive, no extensions, first match wins) |
-| `exclude` | `string[]` | `[]` | Paths to skip (must start and end with `/`) |
-| `include` | `string[]` | `[]` | Paths to process exclusively (must start and end with `/`) |
+| `exclude`  | `string[]` | `[]`         | Paths to skip (must start and end with `/`)                                             |
+| `include`  | `string[]` | `[]`         | Paths to process exclusively (must start and end with `/`)                              |
 
 ## Plugin ordering
 
-Register this plugin **before** any other plugins that modify page URLs
-(e.g., `slugify_urls`). The plugin detects explicit user-set URLs by
-comparing against Lume's auto-generated default; if another preprocessor
-modifies the URL first, this detection may fail.
+Register this plugin **before** any other plugins that modify page URLs (e.g.,
+`slugify_urls`). The plugin detects explicit user-set URLs by comparing against
+Lume's auto-generated default; if another preprocessor modifies the URL first,
+this detection may fail.
 
 ## Behavior
 

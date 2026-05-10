@@ -118,7 +118,9 @@ export function buildUrl(dirPath: string, prettyUrls: boolean): string {
   if (prettyUrls) {
     return dirPath.endsWith("/") ? dirPath : dirPath + "/";
   }
-  return dirPath.endsWith("/") ? dirPath + "index.html" : dirPath + "/index.html";
+  return dirPath.endsWith("/")
+    ? dirPath + "index.html"
+    : dirPath + "/index.html";
 }
 
 /**
@@ -146,7 +148,11 @@ export function computeAutoUrl(srcPath: string, prettyUrls: boolean): string {
  * computeAutoUrl. This correctly handles _data inheritance, all front matter
  * formats (YAML/JSON/TOML), and URL functions.
  */
-export function hasExplicitUrl(page: Page, srcPath: string, prettyUrls: boolean): boolean {
+export function hasExplicitUrl(
+  page: Page,
+  srcPath: string,
+  prettyUrls: boolean,
+): boolean {
   const url = page.data.url as string | boolean | Function | undefined;
   const autoUrl = computeAutoUrl(srcPath, prettyUrls);
 
