@@ -2,9 +2,9 @@ name: Test
 
 on:
   push:
-    branches: [master]
+    branches: [ master ]
   pull_request:
-    branches: [master]
+    branches: [ master ]
 
 jobs:
   test:
@@ -17,6 +17,8 @@ jobs:
           deno-version: v2.x
       - name: Lint
         run: deno lint
+      - name: Check formatting
+        run: deno fmt --check
       - name: Test
         run: deno test --coverage=cov_profile
       - name: Generate Coverage Report
