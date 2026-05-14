@@ -1,7 +1,4 @@
-import {
-  assertEquals,
-  assertThrows,
-} from "assert/mod.ts";
+import { assertEquals, assertThrows } from "assert/mod.ts";
 import readme, {
   buildUrl,
   computeAutoUrl,
