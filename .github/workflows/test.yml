@@ -2,9 +2,9 @@ name: Test
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   test:
@@ -23,3 +23,8 @@ jobs:
         run: deno test --coverage=cov_profile
       - name: Generate Coverage Report
         run: deno coverage cov_profile --lcov --output=cov_profile.lcov
+      - name: Run codacy-coverage-reporter
+        uses: codacy/codacy-coverage-reporter-action@v1.3.0
+        with:
+          project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
+          coverage-reports: cov_profile.lcov
