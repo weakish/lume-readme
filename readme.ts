@@ -38,7 +38,7 @@ export const defaults: Options = {
 export function readme(userOptions?: Options) {
   const options = merge(defaults, userOptions);
 
-  if (options.exclude!.length > 0 && options.include!.length > 0) {
+  if ((options.exclude?.length ?? 0) > 0 && (options.include?.length ?? 0) > 0) {
     throw new Error(
       "readme plugin: `exclude` and `include` options cannot be used together.",
     );
@@ -49,7 +49,7 @@ export function readme(userOptions?: Options) {
       pages.forEach((page: Page) => {
         const srcPath = page.src.path;
 
-        if (!isHomepageMatch(srcPath, options.homepage!)) return;
+        if (!isHomepageMatch(srcPath, options.homepage ?? defaults.homepage)) return;
 
         if (isExcluded(srcPath, options)) return;
 
