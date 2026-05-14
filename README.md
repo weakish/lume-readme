@@ -85,3 +85,6 @@ this detection may fail.
 - **Pretty URLs disabled**: `README.md` → `/path/to/index.html`
 - **Explicit URL set**: If a page has `url` in front matter, it is preserved
 - **Nested homepage files**: Each is transformed to its parent directory URL
+
+
+[![Codacy Badge](https://app.codacy.com/project/badge/Coverage/f94e27d8340f40aeaab9ef8357b0bee0)](https://app.codacy.com/gh/weakish/lume-readme/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_coverage)
