@@ -1,5 +1,6 @@
 {
   "imports": {
+    "assert/": "https://deno.land/std@0.201.0/assert/",
     "lume/core/utils/object.ts": "https://deno.land/x/lume@v3.2.4/core/utils/object.ts",
     "lume/core/file.ts": "https://deno.land/x/lume@v3.2.4/core/file.ts",
     "lume/core/site.ts": "https://deno.land/x/lume@v3.2.4/core/site.ts"

@@ -1,7 +1,7 @@
 import {
   assertEquals,
   assertThrows,
-} from "https://deno.land/std@0.201.0/assert/mod.ts";
+} from "assert/mod.ts";
 import readme, {
   buildUrl,
   computeAutoUrl,
