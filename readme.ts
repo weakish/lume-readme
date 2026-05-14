@@ -1,6 +1,6 @@
 import { merge } from "lume/core/utils/object.ts";
 
-import type { Page } from "lume/core/file.ts";
+import type { Page, RawData } from "lume/core/file.ts";
 import type Site from "lume/core/site.ts";
 
 export interface Options {
@@ -153,7 +153,7 @@ export function hasExplicitUrl(
   srcPath: string,
   prettyUrls: boolean,
 ): boolean {
-  const url = page.data.url as string | boolean | (() => unknown) | undefined;
+  const url = page.data.url as RawData["url"];
   const autoUrl = computeAutoUrl(srcPath, prettyUrls);
 
   if (url === undefined) return false;
