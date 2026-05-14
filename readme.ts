@@ -153,7 +153,7 @@ export function hasExplicitUrl(
   srcPath: string,
   prettyUrls: boolean,
 ): boolean {
-  const url = page.data.url as string | boolean | Function | undefined;
+  const url = page.data.url as string | boolean | (() => unknown) | undefined;
   const autoUrl = computeAutoUrl(srcPath, prettyUrls);
 
   if (url === undefined) return false;
